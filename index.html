@@ -8,15 +8,16 @@
 <body>
     <h2>Formularz Piłka Nożna</h2>
 
-    <form id="formularzPilkaNozna">
+   
+    <form id="formularzPilkaNozna" action="mailto:esskeetit2019100@gmail.com?subject=Formularz Piłka Nożna" method="post">
         <label for="imie">Imię:</label>
-        <input type="text" id="imie" name="imie" placeholder="Wpisz swoje imię"><br><br>
+        <input type="text" id="imie" name="Imię" placeholder="Wpisz swoje imię"><br><br>
 
         <label for="wiek">Wiek:</label>
-        <input type="number" id="wiek" name="wiek" placeholder="Podaj swój wiek"><br><br>
+        <input type="number" id="wiek" name="Wiek" placeholder="Podaj swój wiek"><br><br>
 
         <label for="ulubionaDruzyna">Ulubiona drużyna:</label>
-        <select id="ulubionaDruzyna" name="ulubionaDruzyna">
+        <select id="ulubionaDruzyna" name="Ulubiona drużyna">
             <option value="FC Barcelona">FC Barcelona</option>
             <option value="Real Madrid">Real Madrid</option>
             <option value="Manchester City">Manchester City</option>
@@ -25,28 +26,28 @@
         </select><br><br>
 
         <label>Ulubione pozycje:</label><br>
-        <input type="checkbox" id="bramkarz" name="pozycje" value="Bramkarz"> Bramkarz <br>
-        <input type="checkbox" id="obronca" name="pozycje" value="Obrońca"> Obrońca <br>
-        <input type="checkbox" id="pomocnik" name="pozycje" value="Pomocnik"> Pomocnik <br>
-        <input type="checkbox" id="napastnik" name="pozycje" value="Napastnik"> Napastnik <br><br>
+        <input type="checkbox" id="bramkarz" name="Ulubione pozycje" value="Bramkarz"> Bramkarz <br>
+        <input type="checkbox" id="obronca" name="Ulubione pozycje" value="Obrońca"> Obrońca <br>
+        <input type="checkbox" id="pomocnik" name="Ulubione pozycje" value="Pomocnik"> Pomocnik <br>
+        <input type="checkbox" id="napastnik" name="Ulubione pozycje" value="Napastnik"> Napastnik <br><br>
 
         <label for="uwagi">Dodatkowe uwagi:</label><br>
-        <textarea id="uwagi" name="uwagi" rows="4" placeholder="Podziel się swoimi uwagami..."></textarea><br><br>
+        <textarea id="uwagi" name="Uwagi" rows="4" placeholder="Podziel się swoimi uwagami..."></textarea><br><br>
 
         <button type="button" onclick="pokazPodsumowanie()">Podsumowanie</button>
         <button type="reset">Wyczyść dane</button>
-        <button type="button" onclick="wyslijFormularz()">Wyślij formularz</button>
+        <button type="submit">Wyślij formularz</button>
     </form>
 
     <h2>Podsumowanie:</h2>
     <p id="podsumowanie"></p>
 
     <script>
-        function generujPodsumowanie() {
-            var imie = document.getElementById("imie").value || "";
-            var wiek = document.getElementById("wiek").value || "";
-            var ulubionaDruzyna = document.getElementById("ulubionaDruzyna").value || "";
-            var uwagi = document.getElementById("uwagi").value || "";
+        function pokazPodsumowanie() {
+            var imie = document.getElementById("imie").value;
+            var wiek = document.getElementById("wiek").value;
+            var ulubionaDruzyna = document.getElementById("ulubionaDruzyna").value;
+            var uwagi = document.getElementById("uwagi").value;
 
             var pozycje = [];
             if (document.getElementById("bramkarz").checked) pozycje.push("Bramkarz");
@@ -57,28 +58,13 @@
             var pozycjeText = pozycje.length > 0 ? pozycje.join(", ") : "Brak";
 
             var podsumowanie = 
-                "Imię: \n" + imie + "\n" +
-                "Wiek: \n" + wiek + "\n" +
-                "Ulubiona drużyna: \n" + ulubionaDruzyna + "\n" +
-                "Ulubione pozycje: \n" + pozycjeText + "\n" +
-                "Uwagi: \n" + uwagi;
+                "Imię: " + imie + "<br>" +
+                "Wiek: " + wiek + "<br>" +
+                "Ulubiona drużyna: " + ulubionaDruzyna + "<br>" +
+                "Ulubione pozycje: " + pozycjeText + "<br>" +
+                "Uwagi: " + uwagi;
 
-            return podsumowanie;
-        }
-
-        function pokazPodsumowanie() {
-            var podsumowanie = generujPodsumowanie();
-            document.getElementById("podsumowanie").innerHTML = podsumowanie.replace(/\n/g, "<br>");
-        }
-
-        function wyslijFormularz() {
-            var temat = "Formularz Piłka Nożna";
-            var tresc = generujPodsumowanie();
-
-            
-            var zakodowanaTresc = encodeURIComponent(tresc);
-
-            window.location.href = "mailto:esskeetit2019100@gmail.com?subject=" + encodeURIComponent(temat) + "&body=" + zakodowanaTresc;
+            document.getElementById("podsumowanie").innerHTML = podsumowanie;
         }
     </script>
 </body>
