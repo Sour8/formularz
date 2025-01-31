@@ -8,7 +8,6 @@
 <body>
     <h2>Formularz Piłka Nożna</h2>
 
-   
     <form id="formularzPilkaNozna" action="mailto:esskeetit2019100@gmail.com?subject=Formularz Piłka Nożna" method="post">
         <label for="imie">Imię:</label>
         <input type="text" id="imie" name="Imię" placeholder="Wpisz swoje imię"><br><br>
@@ -49,19 +48,17 @@
             var ulubionaDruzyna = document.getElementById("ulubionaDruzyna").value;
             var uwagi = document.getElementById("uwagi").value;
 
-            var pozycje = [];
-            if (document.getElementById("bramkarz").checked) pozycje.push("Bramkarz");
-            if (document.getElementById("obronca").checked) pozycje.push("Obrońca");
-            if (document.getElementById("pomocnik").checked) pozycje.push("Pomocnik");
-            if (document.getElementById("napastnik").checked) pozycje.push("Napastnik");
-
-            var pozycjeText = pozycje.length > 0 ? pozycje.join(", ") : "Brak";
+            var pozycjetext = "";
+            if (document.getElementById("bramkarz").checked) pozycjetext += "Bramkarz ";
+            if (document.getElementById("obronca").checked) pozycjetext += "Obrońca ";
+            if (document.getElementById("pomocnik").checked) pozycjetext += "Pomocnik ";
+            if (document.getElementById("napastnik").checked) pozycjetext += "Napastnik ";
 
             var podsumowanie = 
                 "Imię: " + imie + "<br>" +
                 "Wiek: " + wiek + "<br>" +
                 "Ulubiona drużyna: " + ulubionaDruzyna + "<br>" +
-                "Ulubione pozycje: " + pozycjeText + "<br>" +
+                "Ulubione pozycje: " + pozycjetext + "<br>" +
                 "Uwagi: " + uwagi;
 
             document.getElementById("podsumowanie").innerHTML = podsumowanie;
@@ -69,3 +66,4 @@
     </script>
 </body>
 </html>
+
