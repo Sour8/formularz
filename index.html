@@ -22,9 +22,7 @@
         var dzienTygodnia = data.getDay();
         var dzienMiesiaca = data.getDate();
 
-        var tymczasowaData = new Date(rok, miesiac - 1, 1);
-        var pierwszyDzienMiesiaca = tymczasowaData.getDay();
-
+        
         if (dzienTygodnia == 0) dzienTygodnia = 7;
         if (pierwszyDzienMiesiaca == 0) pierwszyDzienMiesiaca = 7;
 
